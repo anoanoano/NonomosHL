@@ -397,6 +397,9 @@ handleAssessTax: function() {
 
 handleRevalue: function() {
   //event.preventDefault();
+  var newVal = $('#tokenNewValue').val() * 1000;
+  var val = $('#tokenNewValue').html();
+  if (newVal > 0) {
 
   web3.eth.getAccounts(function(error, accounts) {
     if (error) {
@@ -405,19 +408,22 @@ handleRevalue: function() {
     console.log("revalue function 1");
     var account = accounts[0];
     var tokenID = $('#tokenIDGetter').val();
-    var newVal = $('#tokenNewValue').val() * 1000;
 
-    App.contracts.ERC721HarbergerLicense.deployed().then(function(instance) {
 
-      instance.selfAssess(tokenID, newVal).then(function(result) {
+        App.contracts.ERC721HarbergerLicense.deployed().then(function(instance) {
+
+          instance.selfAssess(tokenID, newVal).then(function(result) {
 
             console.log("revaluation: "+result);
 
-    }).catch(function(err) {
-      console.log(err.message);
+          }).catch(function(err) {
+            console.log(err.message);
+      });
     });
   });
-  });
+  } else {
+    console.log("error: must enter a value greater than zero when you revalue");
+  };
 },
 
 
