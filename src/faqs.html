@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <title>JustSavannah</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Syncopate" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <style>
+  body {
+      font: 400 15px Quicksand, sans-serif;
+      line-height: 1.8;
+      color: #818181;
+  }
+  h2 {
+      font-size: 24px;
+      color: #303030;
+      font-weight: 600;
+      margin-bottom: 30px;
+  }
+  h4 {
+      font-size: 19px;
+      line-height: 1.375em;
+      color: #303030;
+      font-weight: 400;
+      margin-bottom: 30px;
+  }
+  .jumbotron {
+      background-color: #dc5d61;
+      color: #fff;
+      padding: 100px 25px;
+      font-family: Quicksand, sans-serif;
+  }
+  .container-fluid {
+      padding: 60px 50px;
+  }
+  .bg-grey {
+      background-color: #f6f6f6;
+  }
+  .btn-default {
+      background-color: #5f4b8b;
+      border-color: #5f4b8b;
+      color: #fff;
+  }
+  .logo-small {
+      color: #dc5d61;
+      font-size: 50px;
+  }
+  .logo-medium {
+      color: #dc5d61;
+      font-size: 100px;
+  }
+  .logo {
+      color: #dc5d61;
+      font-size: 200px;
+  }
+  .thumbnail {
+      padding: 0 0 15px 0;
+      border: none;
+      border-radius: 0;
+  }
+  .thumbnail img {
+      width: 100%;
+      height: 100%;
+      margin-bottom: 10px;
+  }
+  .carousel-control.right, .carousel-control.left {
+      background-image: none;
+      color: #dc5d61;
+  }
+  .carousel-indicators li {
+      border-color: #dc5d61;
+  }
+  .carousel-indicators li.active {
+      background-color: #dc5d61;
+  }
+  .item h4 {
+      font-size: 19px;
+      line-height: 1.375em;
+      font-weight: 400;
+      font-style: italic;
+      margin: 70px 0;
+  }
+  .item span {
+      font-style: normal;
+  }
+  .panel {
+      border: 1px solid #dc5d61;
+      border-radius:0 !important;
+      transition: box-shadow 0.5s;
+  }
+  .panel:hover {
+      box-shadow: 5px 0px 40px rgba(0,0,0, .2);
+  }
+  .panel-footer .btn:hover {
+      border: 1px solid #dc5d61;
+      background-color: #fff !important;
+      color: #dc5d61;
+  }
+  .panel-heading {
+      color: #fff !important;
+      background-color: #dc5d61 !important;
+      padding: 25px;
+      border-bottom: 1px solid transparent;
+      border-top-left-radius: 0px;
+      border-top-right-radius: 0px;
+      border-bottom-left-radius: 0px;
+      border-bottom-right-radius: 0px;
+  }
+  .panel-footer {
+      background-color: white !important;
+  }
+  .panel-footer h3 {
+      font-size: 32px;
+  }
+  .panel-footer h4 {
+      color: #aaa;
+      font-size: 14px;
+  }
+  .panel-footer .btn {
+      margin: 15px 0;
+      background-color: #dc5d61;
+      color: #fff;
+  }
+  #groupEditor {
+    transition: margin-left .5s;
+    transition: margin-right .5s;
+    padding: 16px;
+  }
+  #proposalBrowser {
+    transition: margin-left .5s;
+    transition: margin-right .5s
+    padding: 16px;
+  }
+  #walletInfo {
+    transition: margin-left .5s;
+    padding: 16px;
+  }
+  /* overlay on vids*/
+  .vidoverlay {
+      /* position:fixed;
+      top:0;
+      left:0;
+      width:100%;
+      height:50%; */
+      position: absolute;
+      bottom: 66px;
+      width: 100%;
+      background:#F10C0C;
+      opacity:0.8;
+      /*background:rgba(255,255,255,0.8); or just this*/
+      z-index:50;
+      color:#fff;
+      display: none; /*hidden*/
+      font-size: 12px;
+  }
+  .hovertext {
+      z-index: 100;
+  }
+  .fivebyfive-nav {
+    height: 20%; /* 100% Full-height */
+    width: 20%; /* 0 width - change this with JavaScript */
+    /* position: fixed; /* Stay in place */
+    z-index: 1; /* Stay on top */
+    /* top: 0;
+    right: 0; */
+    /* background-color: #111; /* Black*/
+    overflow-x: hidden; /* Disable horizontal scroll */
+  }
+  .bottomnav {
+  height: 0%; /* 100% Full-height */
+  width: 100%; /* 0 width - change this with JavaScript */
+  position: fixed; /* Stay in place */
+  z-index: 51; /* Stay on top */
+  top: 0;
+  right: 0;
+  background-color: #111; /* Black*/
+  overflow-x: hidden; /* Disable horizontal scroll */
+  padding-top: 60px; /* Place content 60px from the top */
+  transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
+}
+  .navbar {
+      margin-bottom: 0;
+      background-color: #dc5d61;
+      z-index: 9999;
+      border: 0;
+      font-size: 12px !important;
+      line-height: 1.42857143 !important;
+      letter-spacing: 4px;
+      border-radius: 0;
+      font-family: Quicksand, sans-serif;
+  }
+  .navbar li a, .navbar .navbar-brand {
+      color: #fff !important;
+      /* text-align: center; */
+  }
+  .navbar-nav li a:hover, .navbar-nav li.active a {
+      color: #dc5d61 !important;
+      background-color: #fff !important;
+  }
+  .navbar-default .navbar-toggle {
+      border-color: transparent;
+      color: #fff !important;
+  }
+  footer .glyphicon {
+      font-size: 20px;
+      margin-bottom: 20px;
+      color: #dc5d61;
+  }
+  .rightsidenav {
+    height: 100%; /* 100% Full-height */
+    width: 0; /* 0 width - change this with JavaScript */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Stay on top */
+    top: 0;
+    right: 0;
+    background-color: #111; /* Black*/
+    overflow-x: hidden; /* Disable horizontal scroll */
+    padding-top: 60px; /* Place content 60px from the top */
+    transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
+  }
+  .sidenav {
+    height: 100%; /* 100% Full-height */
+    width: 0; /* 0 width - change this with JavaScript */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Stay on top */
+    top: 0;
+    left: 0;
+    background-color: #111; /* Black*/
+    overflow-x: hidden; /* Disable horizontal scroll */
+    padding-top: 60px; /* Place content 60px from the top */
+    transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
+  }
+  .sidediv {
+      padding: 15px;
+  }
+  .slideanim {visibility:hidden;}
+  .slide {
+      animation-name: slide;
+      -webkit-animation-name: slide;
+      animation-duration: 1s;
+      -webkit-animation-duration: 1s;
+      visibility: visible;
+  }
+  .text-center {
+      text-align: center;
+  }
+
+/* no gutter maker */
+  .row.no-gutter {
+    margin-left: 0;
+    margin-right: 0;
+  }
+  .row.no-gutter [class*='col-']:not(:first-child),
+  .row.no-gutter [class*='col-']:not(:last-child) {
+    padding-right: 0;
+    padding-left: 0;
+  }
+
+  @keyframes slide {
+    0% {
+      opacity: 0;
+      transform: translateY(70%);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0%);
+    }
+  }
+  @-webkit-keyframes slide {
+    0% {
+      opacity: 0;
+      -webkit-transform: translateY(70%);
+    }
+    100% {
+      opacity: 1;
+      -webkit-transform: translateY(0%);
+    }
+  }
+  @media screen and (max-width: 768px) {
+    .col-sm-4 {
+      text-align: center;
+      margin: 25px 0;
+    }
+    .btn-lg {
+        width: 100%;
+        margin-bottom: 35px;
+    }
+  }
+  @media screen and (max-width: 480px) {
+    .logo {
+        font-size: 150px;
+    }
+  }
+  </style>
+</head>
+<body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
+
+<!-- <nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#myPage">Nonomos</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#about">INTRO</a></li>
+        <li><a href="#basics">BASICS</a></li>
+        <li><a href="#console">CONSOLE</a></li>
+        <li><a href="#contact">CONTACT</a></li>
+        <li><a href="activate.html">/ACTIVATE</a></li>
+      </ul>
+    </div>
+  </div>
+</nav> -->
+
+<!--
+<div class="col-sm-6" id="proposalBrowser" style="background-color: #dc5d61; color: white">
+
+  <div class="embed-responsive embed-responsive-16by9" padding-left="0">
+    <iframe class="embed-responsive-item" id="1" src="https://www.youtube.com/embed/ZdjAD035oJc"></iframe>
+  </div>
+
+  <div class="embed-responsive embed-responsive-16by9">
+    <iframe class="embed-responsive-item" id="1" src="https://www.youtube.com/embed/ZdjAD035oJc"></iframe>
+  </div>
+
+</div>
+
+<div class="col-sm-6" id="groupEditor" style="text-align:left">
+
+  <div class="embed-responsive embed-responsive-16by9">
+    <iframe class="embed-responsive-item" id="1" src="https://www.youtube.com/embed/ZdjAD035oJc"></iframe>
+  </div>
+
+  <div class="embed-responsive embed-responsive-16by9">
+    <iframe class="embed-responsive-item" id="1" src="https://www.youtube.com/embed/ZdjAD035oJc"></iframe>
+  </div>
+
+</div> -->
+
+<nav class="navbar navbar-default navbar-top" style="background: black">
+  <!-- <div class="container"> -->
+    <!-- <div class="navbar-header"> -->
+      <!-- <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button> -->
+      <h2 class="text-center" href="#controls" style="align: center; color: white">Savannah</h2>
+    <!-- </div> -->
+    <!-- <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#about">INTRO</a></li>
+        <li><a href="#basics">BASICS</a></li>
+        <li><a href="#console">CONSOLE</a></li>
+        <li><a href="#contact">CONTACT</a></li>
+        <li><a href="activate.html">/ACTIVATE</a></li>
+      </ul>
+    </div>
+  </div> -->
+</nav>
+
+<div id="controls" class="container-fluid" style="background: black">
+    <h2 class ="text-center" style="font-size:30px;cursor:pointer;color:white" id="toggleVidInfo">&#9776; Stake Your Non-Monopolistic Claim Today.</h2><br>
+  <div class ="row" id="controlsNav">
+  <!-- <div class="bottomnav" id="controlsNavBottom"> -->
+    <div class ="col-sm-3">
+      <input type="text" id="tokenIDGetter" placeholder="Token ID Selector"></input><br>
+      <button class ="btn-default" id="toggleDetailedInfo">Get Detailed Token Info</button><br>
+      <button class ="btn-default" id="acquireBtn">Acquire Token</button><br>
+
+      <p type="textdisplay" style="display:none"  id="TokenIDDisplay">ID:</p><br>
+      <p type="textdisplay" style="display:none"  id="TokenValue">Value (ether):</p><br>
+      <p type="textdisplay" style="display:none"  id="PresentTaxRate">Present Tax Rate:</p><br>
+      <p type="textdisplay" style="display:none"  id="TaxesOwed">Taxes Owed (at last assessment):</p><br>
+      <p type="textdisplay" style="display:none"  id="VideoID">Video ID:</p><br>
+      <p type="textdisplay" style="display:none"  id="FeeBeneficiary">Tax Destination:</p><br>
+      <p type="textdisplay" style="display:none"  id="Created">Date Created:</p><br>
+      <p type="textdisplay" style="display:none"  id="LastAssessment">Last Assessment:</p><br>
+      <p type="textdisplay" style="display:none"  id="IncurredTaxes">Incurred Tax:</p><br>
+      <p type="textdisplay" style="display:none"  id="PaidTaxes">Paid Taxes:</p><br>
+
+      <!-- <button class "btn btn-default" id="tokenIDGetterBtn">Get Token Info</button>
+      <p id="tokenIDOwnerAddress">Token Owner</p>
+      <button class "btn btn-default" id="acquisitionPriceBtn">Get Acquisition Price</button>
+      <p id="acquisitionPrice">Acquisition Price</p> -->
+
+    </div>
+    <div class ="col-sm-3">
+      <input type="text" id="tokenNewValue" placeholder="New Token Valuation"></input>
+      <button class ="btn-default" id="revalueToken">Reassess Token Value</button><br>
+
+
+
+    </div>
+    <div class ="col-sm-3">
+
+      <button class ="btn-default" id="payTax">Pay Outstanding Tax</button><br>
+      <input type="text" id="YTVidID" placeholder="YouTube Video ID"></input>
+      <button class ="btn-default" id="channelChangeBtn">Change Channel</button><br>
+
+
+
+
+
+      <!-- <button class "btn btn-default" id="getVideoID">Get Video ID</button>
+      <button class "btn btn-default" id="refreshVid">Refresh Vid from Chain</button>
+      <button class "btn btn-default" id="refreshAllVids">Refresh All Vids from Chain</button> -->
+      <!-- <button class "btn btn-default" id="hideVidInfo" onclick="hideVidInfo()">Hide Vid Info</button> -->
+      <!-- <button class "btn btn-default" id="showVidInfo">Hide Vid Info</button> -->
+    </div>
+    <div class ="col-sm-3">
+      <input type="text" id="tokenID" placeholder="token ID"></input>
+      <input type="text" id="turnoverRate" placeholder="turnovers per century"></input>
+      <input type="text" id="harlicValue" placeholder="value (ether)"></input>
+      <!-- <input type="text" id="publicEquity" placeholder="public equity"></input> -->
+      <input type="text" id="feeBeneficiary" placeholder="fee beneficiary"></input>
+      <input type="text" id="tokenURI" placeholder="tokenURI"></input>
+      <input type="text" id="videoID" placeholder="video ID"></input>
+      <button class ="btn-default" id="mintToken">Mint Token</button>
+    </div>
+  </div>
+</div>
+
+
+<!-- Container (explanation Section) -->
+<div id="about-2" class="container-fluid bg-grey">
+  <div class ="row">
+    <div class ="col-sm-4">
+      <h2>This is how the future will work.</h2><br>
+    </div>
+    <div class ="col-sm-8">
+      <h2>This display can be yours.</h2><br>
+      <h4>Each of the 16 videos on this screen is represented by a unique token on the Ethereum network, numbered 1-16.  Token ID 1 is the video in the top left, Token ID 2 is the one below it, and so on (i.e., if you see four columns, the top video in the second column is video 5).</h4>
+      <h4>You'll need Metamask to use this site.  Enter the token number of the video you want in the Token ID Selector box, and then click the other buttons to do get more info or do something with it.</h4>
+      <h4>Click "Acquire Token" to buy it.  Don't worry, Metamask will give you a chance to review and approve the transaction.</h4>
+      <h4>If you own the selected token, you can change the channel by submitting a new Youtube video ID while the token you own is entered in the "Token ID Selector" box.  (If you go look at a Youtube video URL, it ends in v=Blablabla.  Blablabla is the video ID.)</h4>
+      <h4>If you own a token, you may also pay owed taxes on it, or re-assess it.  These assessments and taxations follow a Harberger Taxation system, so that the higher you assess your token, the more it costs someone else to buy it away from you, but the more you have to pay to retain it, and vice-versa.</h4><br>
+    </div>
+  </div>
+</div>
+
+
+<script>
+$(document).ready(function(){
+
+  // Add smooth scrolling to all links in navbar + footer link
+  $(".navbar a, footer a[href='#myPage']").on('click', function(event) {
+    // Make sure this.hash has a value before overriding default behavior
+    if (this.hash !== "") {
+      // Prevent default anchor click behavior
+      event.preventDefault();
+
+      // Store hash
+      var hash = this.hash;
+
+      // Using jQuery's animate() method to add smooth page scroll
+      // The optional number (900) specifies the number of milliseconds it takes to scroll to the specified area
+      $('html, body').animate({
+        scrollTop: $(hash).offset().top
+      }, 900, function(){
+
+        // Add hash (#) to URL when done scrolling (default click behavior)
+        window.location.hash = hash;
+      });
+    } // End if
+  });
+
+  $(window).scroll(function() {
+    $(".slideanim").each(function(){
+      var pos = $(this).offset().top;
+
+      var winTop = $(window).scrollTop();
+        if (pos < winTop + 600) {
+          $(this).addClass("slide");
+        }
+    });
+  });
+})
+
+function toggleControls() {
+  var x = document.getElementById("controlsNavBottom");
+    if (x.style.height < "1%") {
+      openControls();
+    } else {
+
+    }
+
+};
+
+function openControls() {
+
+    document.getElementById("controlsNavBottom").style.height = 100%;
+
+
+};
+
+function sampleFunc() {
+  console.log("function called");
+  var vidID = $('#input1').val();
+  console.log("print Vid ID "+vidID);
+  var embedLink = ("https://www.youtube.com/embed/"+vidID+"?autoplay=1&mute=1&loop=1&modestbranding=1&playlist="+vidID);
+  console.log("print embedLink "+embedLink);
+  //document.getElementById("1.1").src = "https://www.youtube.com/embed/LSZsDZ0k5AE?autoplay=1&mute=1&loop=1&modestbranding=1&playlist=LSZsDZ0k5AE";
+  document.getElementById("1.1").src = embedLink;
+};
+
+// function toggleVidInfo() {
+//   console.log("vidInfo function called");
+//   var x = $('#text_1').html();
+//   //showVidInfo();
+//   console.log(x);
+//   if (x == "Hidden Text") {
+//     $('#text_1').html("Showing Text");
+//     showVidInfo();
+//   } else {
+//     hideVidInfo();
+//     $('#text_1').html("Hidden Text");
+//   }
+// };
+//
+// function showVidInfo() {
+//   console.log("vidInfo function called");
+//   $('.vidoverlay').show();
+// };
+//
+// function hideVidInfo() {
+//   console.log("vidInfo function called");
+//   $('.vidoverlay').hide();
+// };
+
+
+
+</script>
+
+<!-- youtube API scripts -->
+<!-- <script type="text/javascript">
+  var tag = document.createElement('script');
+  tag.id = 'iframe-demo';
+  tag.src = 'https://www.youtube.com/iframe_api';
+  var firstScriptTag = document.getElementsByTagName('script')[0];
+  firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+  function onYouTubeIframeAPIReady() {
+    var player;
+    player = new YT.Player('1.1', {
+      playerVars: { 'mute': 1, 'autoplay': 1, 'controls': 0, 'modestbranding': 1 },
+      events: {
+        'onReady': onPlayerReady,
+        'onPlaybackQualityChange': onPlayerPlaybackQualityChange,
+        'onStateChange': onPlayerStateChange,
+        'onError': onPlayerError
+      }
+    });
+  }
+
+  function onPlayerReady(event) {
+    document.getElementById('1.1').style.borderColor = '#FF6D00';
+    document.getElementById('1.1').playerVars.mute = 1;
+  }
+  function changeBorderColor(playerStatus) {
+    var color;
+    if (playerStatus == -1) {
+      color = "#37474F"; // unstarted = gray
+    } else if (playerStatus == 0) {
+      color = "#FFFF00"; // ended = yellow
+    } else if (playerStatus == 1) {
+      color = "#33691E"; // playing = green
+    } else if (playerStatus == 2) {
+      color = "#DD2C00"; // paused = red
+    } else if (playerStatus == 3) {
+      color = "#AA00FF"; // buffering = purple
+    } else if (playerStatus == 5) {
+      color = "#FF6DOO"; // video cued = orange
+    }
+    if (color) {
+      document.getElementById('1.1').style.borderColor = color;
+    }
+  }
+  function onPlayerStateChange(event) {
+    changeBorderColor(event.data);
+  }
+</script> -->
+<!-- jQuery (necessary for Bootstraps JavaScript plugins) -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="js/bootstrap.min.js"></script>
+<script src="js/web3.min.js"></script>
+<script src="js/truffle-contract.js"></script>
+<script src="js/app.js"></script>
+
+</body>
+</html>

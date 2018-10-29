@@ -1,0 +1,1006 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <title>Nonomos</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Syncopate" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <style>
+  body {
+      font: 400 15px Quicksand, sans-serif;
+      line-height: 1.8;
+      color: #818181;
+  }
+  h2 {
+      font-size: 24px;
+      color: #303030;
+      font-weight: 600;
+      margin-bottom: 30px;
+  }
+  h4 {
+      font-size: 19px;
+      line-height: 1.375em;
+      color: #303030;
+      font-weight: 400;
+      margin-bottom: 30px;
+  }
+  .jumbotron {
+      background-color: #dc5d61;
+      color: #fff;
+      padding: 100px 25px;
+      font-family: Quicksand, sans-serif;
+  }
+  .container-fluid {
+      padding: 60px 50px;
+  }
+  .bg-grey {
+      background-color: #f6f6f6;
+  }
+  .btn-default {
+      background-color: #5f4b8b;
+      border-color: #5f4b8b;
+      color: #fff;
+  }
+  .col-md-5 {
+    width: 1.2%;
+    /* background-color: #5f4b8b; */
+  }
+  .col-md-3 {
+    /* width: 24.7%; */
+  }
+  .logo-small {
+      color: #dc5d61;
+      font-size: 50px;
+  }
+  .logo-medium {
+      color: #dc5d61;
+      font-size: 100px;
+  }
+  .logo {
+      color: #dc5d61;
+      font-size: 200px;
+  }
+  .thumbnail {
+      padding: 0 0 15px 0;
+      border: none;
+      border-radius: 0;
+  }
+  .thumbnail img {
+      width: 100%;
+      height: 100%;
+      margin-bottom: 10px;
+  }
+  .carousel-control.right, .carousel-control.left {
+      background-image: none;
+      color: #dc5d61;
+  }
+  .carousel-indicators li {
+      border-color: #dc5d61;
+  }
+  .carousel-indicators li.active {
+      background-color: #dc5d61;
+  }
+  .item h4 {
+      font-size: 19px;
+      line-height: 1.375em;
+      font-weight: 400;
+      font-style: italic;
+      margin: 70px 0;
+  }
+  .item span {
+      font-style: normal;
+  }
+  .panel {
+      border: 1px solid #dc5d61;
+      border-radius:0 !important;
+      transition: box-shadow 0.5s;
+  }
+  .panel:hover {
+      box-shadow: 5px 0px 40px rgba(0,0,0, .2);
+  }
+  .panel-footer .btn:hover {
+      border: 0px solid #dc5d61;
+      background-color: lightgrey;
+      color: #dc5d61;
+  }
+  .panel-heading {
+      color: #fff !important;
+      background-color: #dc5d61 !important;
+      padding: 25px;
+      border-bottom: 1px solid transparent;
+      border-top-left-radius: 0px;
+      border-top-right-radius: 0px;
+      border-bottom-left-radius: 0px;
+      border-bottom-right-radius: 0px;
+  }
+  .panel-footer {
+      background-color: white;
+  }
+  .panel-footer h3 {
+      font-size: 32px;
+  }
+  .panel-footer h4 {
+      font-size: 14px;
+  }
+  .panel-footer .btn {
+      margin: 15px 0;
+      background-color: lightgrey;
+      color: lightgrey;
+  }
+  #groupEditor {
+    transition: margin-left .5s;
+    transition: margin-right .5s;
+    padding: 16px;
+  }
+  #proposalBrowser {
+    transition: margin-left .5s;
+    transition: margin-right .5s
+    padding: 16px;
+  }
+  #walletInfo {
+    transition: margin-left .5s;
+    padding: 16px;
+  }
+  /* overlay on vids*/
+  .vidoverlay {
+      /* position:fixed;
+      top:0;
+      left:0;
+      width:100%;
+      height:50%; */
+      position: absolute;
+      bottom: 66px;
+      width: 100%;
+      background:#5f4b8b;
+      opacity:0.8;
+      /*background:rgba(255,255,255,0.8); or just this*/
+      z-index:1;
+      color:#fff;
+      display: none; /*hidden*/
+      font-size: 12px;
+  }
+  .vidoverlay2 {
+      /* position:fixed;
+      top:0;
+      left:0;
+      width:100%;
+      height:50%; */
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background:#5f4b8b;
+      opacity:0.7;
+      /*background:rgba(255,255,255,0.8); or just this*/
+      z-index:1;
+      color:#fff;
+      display: none; /*hidden*/
+      font-size: 12px;
+  }
+  .hovertext {
+    index: 100;
+  }
+  .fivebyfive-nav {
+    height: 20%; /* 100% Full-height */
+    width: 20%; /* 0 width - change this with JavaScript */
+    /* position: fixed; /* Stay in place */
+    z-index: 1; /* Stay on top */
+    /* top: 0;
+    right: 0; */
+    /* background-color: #111; /* Black*/
+    overflow-x: hidden; /* Disable horizontal scroll */
+  }
+  .bottomnav {
+    height: 0%; /* 100% Full-height */
+    width: 100%; /* 0 width - change this with JavaScript */
+    position: fixed; /* Stay in place */
+    z-index: 51; /* Stay on top */
+    top: 0;
+    right: 0;
+    background-color: #111; /* Black*/
+    overflow-x: hidden; /* Disable horizontal scroll */
+    padding-top: 60px; /* Place content 60px from the top */
+    transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
+  }
+  .navbar {
+
+    margin-bottom: 0;
+    background-color: #dc5d61;
+    z-index: 9;
+    border: 0;
+    font-size: 12px !important;
+    /* line-height: 1.42857143 !important; */
+    letter-spacing: 4px;
+    border-radius: 0;
+    font-family: Quicksand, sans-serif;
+  }
+  .navbar li a, .navbar .navbar-brand {
+      color: #fff !important;
+
+      /* text-align: center; */
+  }
+  .navbar-nav li a:hover, .navbar-nav li.active a {
+      color: #dc5d61 !important;
+      background-color: #fff !important;
+
+  }
+  -default -toggle {
+      border-color: transparent;
+      color: #fff !important;
+  }
+  footer .glyphicon {
+      font-size: 20px;
+      margin-bottom: 20px;
+      color: #dc5d61;
+  }
+  .rightsidenav {
+    height: 100%; /* 100% Full-height */
+    width: 0; /* 0 width - change this with JavaScript */
+    position: fixed; /* Stay in place */
+    z-index: 10; /* Stay on top */
+    top: 0;
+    right: 0;
+    background-color: #111; /* Black*/
+    overflow-x: hidden; /* Disable horizontal scroll */
+    padding-top: 0px; /* Place content 60px from the top */
+    transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
+  }
+  .sidenav {
+    height: 100%; /* 100% Full-height */
+    width: 0; /* 0 width - change this with JavaScript */
+    position: fixed; /* Stay in place */
+    z-index: 10; /* Stay on top */
+    top: 0;
+    left: 0;
+    background-color: #111; /* Black*/
+    overflow-x: hidden; /* Disable horizontal scroll */
+    padding-top: 0px; /* Place content 60px from the top */
+    transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
+  }
+  .sidediv {
+      padding-top: 0px;
+      padding: 15px;
+  }
+  .slideanim {visibility:hidden;}
+  .slide {
+      animation-name: slide;
+      -webkit-animation-name: slide;
+      animation-duration: 1s;
+      -webkit-animation-duration: 1s;
+      visibility: visible;
+  }
+  .text-center {
+      text-align: center;
+  }
+  li{
+    list-style-type:none;
+  }
+  .vertical-align {
+    display: flex;
+    align-items: center;
+  }
+
+/* no gutter maker */
+  .row.no-gutter {
+    margin-left: 0;
+    margin-right: 0;
+  }
+  .row.no-gutter [class*='col-']:not(:first-child),
+  .row.no-gutter [class*='col-']:not(:last-child) {
+    padding-right: 0;
+    padding-left: 0;
+  }
+
+  @keyframes slide {
+    0% {
+      opacity: 0;
+      transform: translateY(70%);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0%);
+    }
+  }
+  @-webkit-keyframes slide {
+    0% {
+      opacity: 0;
+      -webkit-transform: translateY(70%);
+    }
+    100% {
+      opacity: 1;
+      -webkit-transform: translateY(0%);
+    }
+  }
+  @media screen and (max-width: 768px) {
+    .col-sm-4 {
+      text-align: center;
+      margin: 25px 0;
+    }
+    .btn-lg {
+        width: 100%;
+        margin-bottom: 35px;
+    }
+  }
+  @media screen and (max-width: 480px) {
+    .logo {
+        font-size: 150px;
+    }
+  }
+  </style>
+</head>
+<body id="myPage" data-spy="scroll" data-target="" data-offset="60">
+
+<!-- <nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#myPage">Nonomos</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#about">INTRO</a></li>
+        <li><a href="#basics">BASICS</a></li>
+        <li><a href="#console">CONSOLE</a></li>
+        <li><a href="#contact">CONTACT</a></li>
+        <li><a href="activate.html">/ACTIVATE</a></li>
+      </ul>
+    </div>
+  </div>
+</nav> -->
+
+<!--
+<div class="col-sm-6" id="proposalBrowser" style="background-color: #dc5d61; color: white">
+
+  <div class="embed-responsive embed-responsive-16by9" padding-left="0">
+    <iframe class="embed-responsive-item" id="1" src="https://www.youtube.com/embed/ZdjAD035oJc"></iframe>
+  </div>
+
+  <div class="embed-responsive embed-responsive-16by9">
+    <iframe class="embed-responsive-item" id="1" src="https://www.youtube.com/embed/ZdjAD035oJc"></iframe>
+  </div>
+
+</div>
+
+<div class="col-sm-6" id="groupEditor" style="text-align:left">
+
+  <div class="embed-responsive embed-responsive-16by9">
+    <iframe class="embed-responsive-item" id="1" src="https://www.youtube.com/embed/ZdjAD035oJc"></iframe>
+  </div>
+
+  <div class="embed-responsive embed-responsive-16by9">
+    <iframe class="embed-responsive-item" id="1" src="https://www.youtube.com/embed/ZdjAD035oJc"></iframe>
+  </div>
+
+</div> -->
+
+<nav class="navbar navbar-default navbar-top" style="background: black; min-height: 20px; height: 20px">
+
+  <!-- <div class="col-md-4"> -->
+
+    <a class="text-center" href="#myPage" style="color: white">Nonomos</a>
+
+    <a>
+      <span class="glyphicon glyphicon-plus-sign" style="margin: auto;" id="functionsBar"></span>
+    </a>
+    <a>
+      <span class="glyphicon glyphicon-info-sign" style="margin: auto" id="toggleVidInfo"></span>
+    </a>
+    <a>
+      <span class="glyphicon glyphicon-question-sign" style="margin: auto" id="questionsBar"></span>
+    </a>
+
+    <text style="font: italic; text-align: right; padding-top: 0" id="networkInfo">Activate Metamask and connect to the Rinkeby Testnet to use the app.</text>
+
+
+  <!-- </div> -->
+
+  <!-- <div class="col-md-4">
+      <h5 class="text-center" href="#controls" style="align: center; color: white">Savannah</h5>
+  </div>
+
+  <div class="col-md-4">
+  </div> -->
+
+</nav>
+
+
+<div class="container-fluid" style="margin-left:0%; margin-right:0; background:black; padding-top: 0; padding-bottom: 0; padding-left: 0; padding-right: 0;">
+  <div class="row no-gutter">
+
+    <!-- <div class="col-md-5">
+      <a>
+        <span class="glyphicon glyphicon-info-sign" style="margin: auto" id="toggleVidInfo"></span>
+      </a>
+      <a>
+        <span class="glyphicon glyphicon-plus-sign" style="margin: auto" id="functionsBar"></span>
+      </a>
+      <a>
+        <span class="glyphicon glyphicon-question-sign" style="margin: auto" id="questionsBar"></span>
+      </a>
+    </div> -->
+
+
+    <div class="col-md-3">
+        <div class="widget">
+            <div class="widget-header">
+
+            </div>
+            <div class="widget-content">
+              <div class="embed-responsive embed-responsive-16by9">
+                  <iframe class="embed-responsive-item" id="1" allow="fullscreen; autoplay"></iframe>
+                  <div class ="vidoverlay" id="overlay_1">
+                    <p class"hovertext" id="text_1">Hidden Text</p>
+                  </div>
+                  <div class ="vidoverlay2" id="17"></div>
+              </div>
+              <div class="embed-responsive embed-responsive-16by9">
+                <iframe class="embed-responsive-item" id="2" allow="fullscreen; autoplay"></iframe>
+                <div class ="vidoverlay" id="overlay_2">
+                  <p class"hovertext" id="text_2">Initial Hidden Text</p>
+                </div>
+                <div class ="vidoverlay2" id="18"></div>
+              </div>
+              <div class="embed-responsive embed-responsive-16by9">
+                <iframe class="embed-responsive-item" id="3" allow="fullscreen; autoplay"></iframe>
+                <div class ="vidoverlay" id="overlay_3">
+                  <p class"hovertext" id="text_3">Initial Hidden Text</p>
+                </div>
+                <div class ="vidoverlay2" id="19"></div>
+              </div>
+              <div class="embed-responsive embed-responsive-16by9">
+                <iframe class="embed-responsive-item" id="4" allow="fullscreen; autoplay"></iframe>
+                <div class ="vidoverlay" id="overlay_4">
+                  <p class"hovertext" id="text_4">Initial Hidden Text</p>
+                </div>
+                <div class ="vidoverlay2" id="20"></div>
+              </div>
+              <!-- <div class="embed-responsive embed-responsive-16by9">
+                <iframe class="embed-responsive-item" id="1.5" src="https://www.youtube.com/embed/ZdjAD035oJc?autoplay=1&mute=1&loop=1&modestbranding=1" allow="fullscreen; autoplay"></iframe>
+              </div>
+              <div class="embed-responsive embed-responsive-16by9">
+                <iframe class="embed-responsive-item" id="1.6" src="https://www.youtube.com/embed/ZdjAD035oJc?autoplay=1&mute=1&loop=1&modestbranding=1" allow="fullscreen; autoplay"></iframe>
+              </div> -->
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="widget">
+            <div class="widget-header">
+
+            </div>
+            <div class="widget-content">
+              <div class="embed-responsive embed-responsive-16by9">
+                <iframe class="embed-responsive-item" id="5" allow="fullscreen; autoplay"></iframe>
+                <div class ="vidoverlay" id="overlay_5">
+                  <p class"hovertext" id="text_5">Initial Hidden Text</p>
+                </div>
+                <div class ="vidoverlay2" id="21"></div>
+              </div>
+              <div class="embed-responsive embed-responsive-16by9">
+                <iframe class="embed-responsive-item" id="6" allow="fullscreen; autoplay"></iframe>
+                <div class ="vidoverlay" id="overlay_6">
+                  <p class"hovertext" id="text_6">Initial Hidden Text</p>
+                </div>
+                <div class ="vidoverlay2" id="22"></div>
+              </div>
+              <div class="embed-responsive embed-responsive-16by9">
+                <iframe class="embed-responsive-item" id="7" allow="fullscreen; autoplay"></iframe>
+                <div class ="vidoverlay" id="overlay_7">
+                  <p class"hovertext" id="text_7">Initial Hidden Text</p>
+                </div>
+                <div class ="vidoverlay2" id="23"></div>
+              </div>
+              <div class="embed-responsive embed-responsive-16by9">
+                <iframe class="embed-responsive-item" id="8" allow="fullscreen; autoplay"></iframe>
+                <div class ="vidoverlay" id="overlay_8">
+                  <p class"hovertext" id="text_8">Initial Hidden Text</p>
+                </div>
+                <div class ="vidoverlay2" id="24"></div>
+              </div>
+              <!-- <div class="embed-responsive embed-responsive-16by9">
+                <iframe class="embed-responsive-item" id="2.5" src="https://www.youtube.com/embed/ZdjAD035oJc?autoplay=1&mute=1&loop=1&modestbranding=1" allow="fullscreen; autoplay"></iframe>
+              </div>
+              <div class="embed-responsive embed-responsive-16by9">
+                <iframe class="embed-responsive-item" id="2.6" src="https://www.youtube.com/embed/5BwxI_l84dc?autoplay=1&mute=1&loop=1&modestbranding=1" allow="fullscreen; autoplay"></iframe>
+              </div> -->
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="widget">
+            <div class="widget-header">
+
+            </div>
+            <div class="widget-content">
+              <div class="embed-responsive embed-responsive-16by9">
+                <iframe class="embed-responsive-item" id="9" allow="fullscreen; autoplay"></iframe>
+                <div class ="vidoverlay" id="overlay_9">
+                  <p class"hovertext" id="text_9">Initial Hidden Text</p>
+                </div>
+                <div class ="vidoverlay2" id="25"></div>
+              </div>
+              <div class="embed-responsive embed-responsive-16by9">
+                <iframe class="embed-responsive-item" id="10" allow="fullscreen; autoplay"></iframe>
+                <div class ="vidoverlay" id="overlay_10">
+                  <p class"hovertext" id="text_10">Initial Hidden Text</p>
+                </div>
+                <div class ="vidoverlay2" id="26"></div>
+              </div>
+              <div class="embed-responsive embed-responsive-16by9">
+                <iframe class="embed-responsive-item" id="11" allow="fullscreen; autoplay"></iframe>
+                <div class ="vidoverlay" id="overlay_11">
+                  <p class"hovertext" id="text_11">Initial Hidden Text</p>
+                </div>
+                <div class ="vidoverlay2" id="27"></div>
+              </div>
+              <div class="embed-responsive embed-responsive-16by9">
+                <iframe class="embed-responsive-item" id="12" allow="fullscreen; autoplay"></iframe>
+                <div class ="vidoverlay" id="overlay_12">
+                  <p class"hovertext" id="text_12">Initial Hidden Text</p>
+                </div>
+                <div class ="vidoverlay2" id="28"></div>
+              </div>
+              <!-- <div class="embed-responsive embed-responsive-16by9">
+                <iframe class="embed-responsive-item" id="3.5" src="https://www.youtube.com/embed/5BwxI_l84dc?autoplay=1&mute=1&loop=1&modestbranding=1" allow="fullscreen; autoplay"></iframe>
+              </div>
+              <div class="embed-responsive embed-responsive-16by9">
+                <iframe class="embed-responsive-item" id="3.6" src="https://www.youtube.com/embed/ZdjAD035oJc?autoplay=1&mute=1&loop=1&modestbranding=1" allow="fullscreen; autoplay"></iframe>
+              </div> -->
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="widget">
+            <div class="widget-header">
+
+            </div>
+            <div class="widget-content">
+              <div class="embed-responsive embed-responsive-16by9">
+                <iframe class="embed-responsive-item" id="13" allow="fullscreen; autoplay"></iframe>
+                <div class ="vidoverlay" id="overlay_13">
+                  <p class"hovertext" id="text_13">Initial Hidden Text</p>
+                </div>
+                <div class ="vidoverlay2" id="29"></div>
+              </div>
+              <div class="embed-responsive embed-responsive-16by9">
+                <iframe class="embed-responsive-item" id="14" allow="fullscreen; autoplay"></iframe>
+                <div class ="vidoverlay" id="overlay_14">
+                  <p class"hovertext" id="text_14">Initial Hidden Text</p>
+                </div>
+                <div class ="vidoverlay2" id="30"></div>
+              </div>
+              <div class="embed-responsive embed-responsive-16by9">
+                <iframe class="embed-responsive-item" id="15" allow="fullscreen; autoplay"></iframe>
+                <div class ="vidoverlay" id="overlay_15">
+                  <p class"hovertext" id="text_15">Initial Hidden Text</p>
+                </div>
+                <div class ="vidoverlay2" id="31"></div>
+              </div>
+              <div class="embed-responsive embed-responsive-16by9">
+                <iframe class="embed-responsive-item" id="16" allow="fullscreen; autoplay"></iframe>
+                <div class ="vidoverlay" id="overlay_16">
+                  <p class"hovertext" id="text_16">Initial Hidden Text</p>
+                </div>
+                <div class ="vidoverlay2" id="32"></div>
+              </div>
+            </div>
+        </div>
+    </div>
+  </div>
+</div>
+
+<!-- <div id="controls" class="container-fluid" style="background: black">
+    <h2 class ="text-center" style="font-size:30px;cursor:pointer;color:white">&#9776; Stake Your Non-Monopolistic Claim Today.</h2><br>
+  <div class ="row" id="controlsNav"> -->
+  <!-- <div class="bottomnav" id="controlsNavBottom"> -->
+    <!-- <div class ="col-sm-4">
+      <input type="text" id="tokenIDGetter" placeholder="Token ID Selector"></input><br>
+      <button class ="btn-default" id="toggleDetailedInfo">Get Detailed Token Info</button><br>
+      <button class ="btn-default" id="acquireBtn">Acquire Token</button><br>
+
+      <p type="textdisplay" style="display:none"  id="TokenIDDisplay">ID:</p><br>
+      <p type="textdisplay" style="display:none"  id="TokenValue">Value (ether):</p><br>
+      <p type="textdisplay" style="display:none"  id="PresentTaxRate">Present Tax Rate:</p><br>
+      <p type="textdisplay" style="display:none"  id="TaxesOwed">Taxes Owed (at last assessment):</p><br>
+      <p type="textdisplay" style="display:none"  id="VideoID">Video ID:</p><br>
+      <p type="textdisplay" style="display:none"  id="FeeBeneficiary">Tax Destination:</p><br>
+      <p type="textdisplay" style="display:none"  id="Created">Date Created:</p><br>
+      <p type="textdisplay" style="display:none"  id="LastAssessment">Last Assessment:</p><br>
+      <p type="textdisplay" style="display:none"  id="IncurredTaxes">Incurred Tax:</p><br>
+      <p type="textdisplay" style="display:none"  id="PaidTaxes">Paid Taxes:</p><br>
+
+    </div>
+    <div class ="col-sm-4">
+      <input type="text" id="tokenNewValue" placeholder="New Token Valuation"></input>
+      <button class ="btn-default" id="revalueToken">Reassess Token Value</button><br>
+
+
+
+    </div>
+    <div class ="col-sm-4">
+
+      <button class ="btn-default" id="payTax">Pay Outstanding Tax</button><br>
+      <input type="text" id="YTVidID" placeholder="YouTube Video ID"></input>
+      <button class ="btn-default" id="channelChangeBtn">Change Channel</button><br>
+      <li><a href="faqs.html">/faqs</a></li>
+    </div> -->
+
+<!-- Right Side Nav 1 -->
+    <div class="rightsidenav" id="selectorRightsidenav" style="text-align:left">
+
+      <a>
+        <span class="glyphicon glyphicon-remove-sign" style="margin: auto; padding-left: 10px; padding-top: 10px" id="functionsBar"></span>
+      </a>
+
+      <div class="sidediv">
+        <h1 class ="text-center" style="font-size:30px;cursor:pointer;color:white; padding-top: 0px">Stake a Claim.</h1><br>
+
+        <!-- <div class="side-menu-container">
+          <ul class="nav navbar-nav"> -->
+
+
+            <li><i><h3 style="color:grey;">Select a Token</h3></i></li>
+
+              <li><span></span>
+                <input type="text" id="tokenIDGetter" placeholder="Token ID"></input>
+                <button class ="btn-default" id="toggleDetailedInfo" data-toggle="tooltip" data-placement="top" title="Tooltip on top">Get Detailed Token Info</button>
+                </li>
+              </li></br>
+
+              <div class="container" id="infoTable" style="display: none; padding-left: 0">
+                  <div class="row">
+                      <div class="col-md-12" style="padding-left: 0">
+                          <div class="panel-body">
+                              <table class="table table-hover table-striped table-bordered" style="width: 30%">
+                                  <thead>
+                                      <tr>
+                                          <th>Variable</th>
+                                          <th>Value* (to update data, call Update/Recalculate below under Special Functions)</th>
+                                      </tr>
+                                  </thead>
+                                  <tbody>
+                                      <tr>
+                                        <td>Token ID</td>
+                                        <td id="TokenIDDisplay"></td>
+                                      </tr>
+                                  </tbody>
+                                  <tbody>
+                                      <tr>
+                                        <td>Valuation (in ether)</td>
+                                        <td id="TokenValue"></td>
+                                      </tr>
+                                  </tbody>
+                                  <tbody>
+                                      <tr>
+                                        <td>Minimum to Buy</td>
+                                        <td id="Valminusbacktax"></td>
+                                      </tr>
+                                  </tbody>
+                                  <tbody>
+                                      <tr>
+                                        <td>Video ID</td>
+                                        <td id="VideoID"></td>
+                                      </tr>
+                                  </tbody>
+                                  <tbody>
+                                      <tr>
+                                        <td>Token Owner</td>
+                                        <td style="font-size: small" id="ownerAddressInfo">Address</td>
+                                      </tr>
+                                  </tbody>
+                                  <tbody>
+                                      <tr>
+                                        <td>Base Tax Rate</td>
+                                        <td id="BaseTaxRate"></td>
+                                      </tr>
+                                  </tbody>
+                                  <tbody>
+                                      <tr>
+                                        <td>Tax Rate For Present Owner</td>
+                                        <td id="PresentTaxRate"></td>
+                                      </tr>
+                                  </tbody>
+                                  <tbody>
+                                      <tr>
+                                        <td>Tax Rate For Next Owner</td>
+                                        <td id="NextTaxRate"></td>
+                                      </tr>
+                                  </tbody>
+                                  <tbody>
+                                      <tr>
+                                        <td>Tax Beneficiary</td>
+                                        <td style="font-size: small" id="FeeBeneficiary"></td>
+                                      </tr>
+                                  </tbody>
+                                  <tbody>
+                                      <tr>
+                                        <td>Taxes Owed (as of last calculation)</td>
+                                        <td id="TaxesOwed">2</td>
+                                      </tr>
+                                  </tbody>
+                                  <tbody>
+                                      <tr>
+                                        <td>Date Token Created</td>
+                                        <td id="Created"></td>
+                                      </tr>
+                                  </tbody>
+                                  <tbody>
+                                      <tr>
+                                        <td>Date Taxes Last Calculated</td>
+                                        <td id="LastAssessment"></td>
+                                      </tr>
+                                  </tbody>
+                                  <tbody>
+                                      <tr>
+                                        <td>All-Time Taxes Incurred</td>
+                                        <td id="IncurredTaxes"></td>
+                                      </tr>
+                                  </tbody>
+                                  <tbody>
+                                      <tr>
+                                        <td>All-Time Taxes Paid</td>
+                                        <td id="PaidTaxes"></td>
+                                      </tr>
+                                  </tbody>
+                                  <tbody>
+                                      <tr>
+                                        <td>Number of Times Acquired</td>
+                                        <td id="AcquisitionsCounterInfo"></td>
+                                      </tr>
+                                  </tbody>
+                              </table>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+
+
+            <li><i><h3 style="color:grey;">Buy Token</h3></i></li>
+              <li><a href="#"><span></span>
+                <button class ="btn-default" id="acquireBtn">Buy Selected Token</button>
+              </a></li></br>
+            <li><i><h3 style="color:grey;">Interact With a Token You Own</h3></i></li>
+              <li><a href="#"><span></span>
+                <input type="text" id="YTVidID" placeholder="YouTube Video ID"></input>
+                <button class ="btn-default" id="channelChangeBtn">Change Channel</button>
+              </a></li></br>
+              <li><a href="#"><span></span>
+                <input type="text" id="tokenNewValue" placeholder="New Token Valuation"></input>
+                <button class ="btn-default" id="revalueToken">Reassess Token Value</button>
+              </a></li></br>
+              <li><a href="#"><span></span>
+                <button class ="btn-default" id="payTax">Pay Outstanding Tax</button>
+              </a></li></br>
+            <li><i><h3 style="color:grey;">Special Functions</h3></i></li>
+              <li><a href="#"><span></span>
+                <button class ="btn-default" id="assessTax">Update/Recalculate Taxes Owed</button>
+              </a></li></br>
+
+              <!-- Dropdown-->
+
+
+
+
+          <!-- </ul>
+      </div> -->
+
+      <!-- <input type="text" id="tokenIDGetter" placeholder="Token ID Selector"></input><br>
+      <button class ="btn-default" id="toggleDetailedInfo">Get Detailed Token Info</button><br>
+      <button class ="btn-default" id="acquireBtn">Acquire Token</button><br>
+      <input type="text" id="tokenNewValue" placeholder="New Token Valuation"></input>
+      <button class ="btn-default" id="revalueToken">Reassess Token Value</button><br>
+      <button class ="btn-default" id="payTax">Pay Outstanding Tax</button><br>
+      <input type="text" id="YTVidID" placeholder="YouTube Video ID"></input>
+      <button class ="btn-default" id="channelChangeBtn">Change Channel</button><br> -->
+
+      <!-- <p type="textdisplay" style="display:none"  id="TokenIDDisplay">ID:</p><br>
+      <p type="textdisplay" style="display:none"  id="TokenValue">Value (ether):</p><br>
+      <p type="textdisplay" style="display:none"  id="PresentTaxRate">Present Tax Rate:</p><br>
+      <p type="textdisplay" style="display:none"  id="TaxesOwed">Taxes Owed (at last assessment):</p><br>
+      <p type="textdisplay" style="display:none"  id="VideoID">Video ID:</p><br>
+      <p type="textdisplay" style="display:none"  id="FeeBeneficiary">Tax Destination:</p><br>
+      <p type="textdisplay" style="display:none"  id="Created">Date Created:</p><br>
+      <p type="textdisplay" style="display:none"  id="LastAssessment">Last Assessment:</p><br>
+      <p type="textdisplay" style="display:none"  id="IncurredTaxes">Incurred Tax:</p><br>
+      <p type="textdisplay" style="display:none"  id="PaidTaxes">Paid Taxes:</p><br> -->
+
+      </div>
+    </div>
+
+    <div class="rightsidenav" style ="background-color: lightgrey" id="selectorRightsidenav2" style="text-align:left; background-color: lightgrey">
+
+      <a style ="background-color: lightgrey" >
+        <span class="glyphicon glyphicon-remove-sign" style="margin: auto; padding-left: 10px; padding-top: 10px; background-color: lightgrey" id="questionsBar"></span>
+      </a>
+
+      <div class="sidediv" style="padding-left: 0; padding-top: 0; padding-right: 0; background-color: lightgrey">
+        <div id="about-2" class="container-fluid" style="background-color: lightgrey; padding-top: 0; padding-right: 20">
+          <div class ="row">
+            <div class ="col-sm-4" style="padding-left: 0; padding-right: 10">
+              <h1 class ="sticky-top">What is this?</h1><br>
+            </div>
+            <div class ="col-sm-8" style="padding-left: 0; padding-right: 0">
+              <h2>This is an illustration of a novel private property scheme called Harberger taxation.</h2>
+                <h4>Based on the ideas of economists Henry George, Arnold Harberger, and Glen Weyl, Harberger taxation is designed to reduce monopoly rents and inefficient speculative behavior. If implemented in the real world, it could be the basis of a more just, equal, and efficient economy. This project is a "sandbox" and a bridge to broader implementation in cryptocurrency ecosystems and beyond.
+                  <br><iframe class="embed-responsive-item" style="width: 100%" src="https://www.youtube.com/embed/hXrZ5Ek52ko?modestbranding=1" id="tutorialVid" allow="fullscreen"></iframe>
+                </h4>
+
+              <h2>OK, how does this work?</h2>
+                <h4>Your "property" in this scheme is a unique Ethereum (ERC-721) token, entitling you to control one of the 16 video panels. To possess a Token, you have to pay property tax. This is calculated as a percentage of the Token's declared value. But <i>you get to to declare</i> yourself what the Token (i.e., your control of a video panel) is worth.</h4>
+                <h4>What's the catch--why not just declare low values? Because the value you declare is <i>also a public sell offer</i>. If someone pays you that amount, you must give them your property.</h4>
+              <h2>How do I find out which Token ID corresponds to which panel?</h2>
+                <h4>The Tokens are numbered 1-16. Click the "info" icon at the top left of the screen to see the Token ID numbers, or enter a number from 1-16 in the "Select a Token" box on the console (accessible with the plus sign in the upper left of the screen). The video corresponding to the Token whose number is in the box will be highlighted on the screen, and you can click "Get Detailed Info" for more about that Token.</h4>
+              <h2>Start interacting with the tokens by buying one.</h2>
+                <h4>(You'll need Metamask to do this.)  Use the console to select a token, see its price, tax rate, and other relevant data, and buy it.</h4>
+              <h2>When you own a Token, you can control the video that apears on the corresponding panel on this site.</h2>
+                <h4>You do this by selecting the Token in the console and submitting a new YouTube video ID (found at the end of every YouTube URL).  You can also reassess its value, and pay taxes you owe on the Token.</h4>
+              <h2>How are taxes calculated?</h2>
+                  <h4>When it was created, each token was assigned a base tax rate. The first few owners of each token, however, pay less than that base rate. As the token changes hands more times, it approaches this rate asymptotically (current rate = (1 - (base rate/number of times the token has been purchased)). When you click "detailed info" on the console you can see each token's current tax rate and the rate that you will pay after you have acquired it. This pattern reflects the idea of <a href="https://medium.com/blockchannel/reimagining-property-fbce9d3832a4">"decaying artificial capital"</a> and gives early adopters a heightened incentive to drive the platform's value.</h4>
+              <h2>How are taxes collected?</h2>
+                <h4>The amount of back taxes owed by Token possessors are tracked continually, assessed each second. A Token owner may pay taxes to zero out her back taxes.  Or, she may simply not pay taxes.  But when a new owner buys the Token from her, she will receive only the price of the Token minus the back taxes she owes.</h4>
+                <h4>Furthermore, <b>if her back taxes grow to exceed one Ether,<i>the value of her Token will be automatically reset to zero</i></b>, allowing anyone else to snap it up.  So don't let your back taxes accumulate!</h4>
+              <h2>Where does the tax money go?</h2>
+                <h4>On the Rinkeby testnet, the fake ether collected via tax on Tokens 1-16 (i.e., the videos) goes to an account controlled by Nonomos (this is the "Tax Beneficiary" under Detailed Info).  It's TBD how tax revenues will be handled on mainnet. In an ideal Harberger tax ecosystem, the taxes would actually be divided up and sent directly back to you--i.e., visitors of this website--to compensate you for the fact that your eyeballs make this ecosystem more valuable. This reflects a thought-provoking insight known as the Henry George Theorem. But to do that here, we'd need to verify your identity, which is beyond the scope of the demo at this point.</h4>
+                <h4>Remember, too, that if you use our smart contract to mint your own Harberger license Tokens (i.e., Tokens numbered higher than 16), you can set the tax beneficiary yourself, thus plugging the taxation system into whatever institutional architecture you please.  See below.</h4>
+              <h2>Can I do anything else with these Tokens?</h2>
+                <h4>Yep. Below, you can mint your very own. Token IDs 1-16 are taken for the 16 video panels here. But IDs 17-infinity, as of this writing, do not exist. Choose a unique number (the transaction will fail if your preferred Token ID has already been taken), fill in the rest of the info (if there is a field that you don't need, like video ID, it doesn't matter, just put any string of letters/numbers), and click Mint Token. The unique ERC-721 token is now held by the account you used to mint it. You can interact with it on this site, or if you know what you're doing, any other Ethereum client. Write a real-world contract that entitles the holder to of your Token to use a real-world asset. Experiment!  And check out our <a href="https://github.com/anoanoano/JustSavannah">Github.</a></h4>
+
+            </div>
+          </div>
+          <div>
+            <input type="text" id="tokenID" placeholder="token ID"></input>
+            <input type="text" id="turnoverRate" placeholder="yearly base tax (%)"></input>
+            <input type="text" id="harlicValue" placeholder="value (ether)"></input>
+            <!-- <input type="text" id="publicEquity" placeholder="public equity"></input> -->
+            <input type="text" id="feeBeneficiary" placeholder="fee beneficiary"></input>
+            <input type="text" id="tokenURI" placeholder="tokenURI"></input>
+            <input type="text" id="videoID" placeholder="video ID"></input>
+            <button class ="btn-default" id="mintToken">Mint Token</button>
+          </div>
+        </div>
+      </div>
+      <h4 style="background-color: lightgrey; text-align: center">Nonomos, 2018</h4>
+    </div>
+
+
+
+  <!-- </div>
+</div> -->
+
+
+<script>
+$(document).ready(function(){
+
+  // Add smooth scrolling to all links in navbar + footer link
+  $(" a, footer a[href='#myPage']").on('click', function(event) {
+    // Make sure this.hash has a value before overriding default behavior
+    if (this.hash !== "") {
+      // Prevent default anchor click behavior
+      event.preventDefault();
+
+      // Store hash
+      var hash = this.hash;
+
+      // Using jQuery's animate() method to add smooth page scroll
+      // The optional number (900) specifies the number of milliseconds it takes to scroll to the specified area
+      $('html, body').animate({
+        scrollTop: $(hash).offset().top
+      }, 900, function(){
+
+        // Add hash (#) to URL when done scrolling (default click behavior)
+        window.location.hash = hash;
+      });
+    } // End if
+  });
+
+  $(window).scroll(function() {
+    $(".slideanim").each(function(){
+      var pos = $(this).offset().top;
+
+      var winTop = $(window).scrollTop();
+        if (pos < winTop + 600) {
+          $(this).addClass("slide");
+        }
+    });
+  });
+})
+
+// function toggleVidInfo() {
+//   console.log("vidInfo function called");
+//   var x = $('#text_1').html();
+//   //showVidInfo();
+//   console.log(x);
+//   if (x == "Hidden Text") {
+//     $('#text_1').html("Showing Text");
+//     showVidInfo();
+//   } else {
+//     hideVidInfo();
+//     $('#text_1').html("Hidden Text");
+//   }
+// };
+//
+// function showVidInfo() {
+//   console.log("vidInfo function called");
+//   $('.vidoverlay').show();
+// };
+//
+// function hideVidInfo() {
+//   console.log("vidInfo function called");
+//   $('.vidoverlay').hide();
+// };
+
+
+
+</script>
+
+<!-- youtube API scripts -->
+<!-- <script type="text/javascript">
+  var tag = document.createElement('script');
+  tag.id = 'iframe-demo';
+  tag.src = 'https://www.youtube.com/iframe_api';
+  var firstScriptTag = document.getElementsByTagName('script')[0];
+  firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+  function onYouTubeIframeAPIReady() {
+    var player;
+    player = new YT.Player('1.1', {
+      playerVars: { 'mute': 1, 'autoplay': 1, 'controls': 0, 'modestbranding': 1 },
+      events: {
+        'onReady': onPlayerReady,
+        'onPlaybackQualityChange': onPlayerPlaybackQualityChange,
+        'onStateChange': onPlayerStateChange,
+        'onError': onPlayerError
+      }
+    });
+  }
+
+  function onPlayerReady(event) {
+    document.getElementById('1.1').style.borderColor = '#FF6D00';
+    document.getElementById('1.1').playerVars.mute = 1;
+  }
+  function changeBorderColor(playerStatus) {
+    var color;
+    if (playerStatus == -1) {
+      color = "#37474F"; // unstarted = gray
+    } else if (playerStatus == 0) {
+      color = "#FFFF00"; // ended = yellow
+    } else if (playerStatus == 1) {
+      color = "#33691E"; // playing = green
+    } else if (playerStatus == 2) {
+      color = "#DD2C00"; // paused = red
+    } else if (playerStatus == 3) {
+      color = "#AA00FF"; // buffering = purple
+    } else if (playerStatus == 5) {
+      color = "#FF6DOO"; // video cued = orange
+    }
+    if (color) {
+      document.getElementById('1.1').style.borderColor = color;
+    }
+  }
+  function onPlayerStateChange(event) {
+    changeBorderColor(event.data);
+  }
+</script> -->
+<!-- jQuery (necessary for Bootstraps JavaScript plugins) -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="js/bootstrap.min.js"></script>
+<script src="js/web3.min.js"></script>
+<script src="js/truffle-contract.js"></script>
+<script src="js/app.js"></script>
+
+</body>
+</html>
