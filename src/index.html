@@ -784,10 +784,22 @@
               <li><a href="#"><span></span>
                 <button class ="btn-default" id="payTax">Pay Outstanding Tax</button>
               </a></li></br>
-            <li><i><h3 style="color:grey;">Special Functions</h3></i></li>
+            <li><i><h3 style="color:grey;">Update Data For Selected Token</h3></i></li>
               <li><a href="#"><span></span>
-                <button class ="btn-default" id="assessTax">Update/Recalculate Taxes Owed</button>
+                <button class ="btn-default" id="assessTax">Update Data/Recalculate Taxes Owed</button>
               </a></li></br>
+
+            <li><i><h3 style="color:grey;">Mint New Token</h3></i></li>
+              <li><a href="#"><span></span>
+                <input type="text" id="tokenID" placeholder="token ID"></input>
+                <input type="text" id="turnoverRate" placeholder="yearly base tax (%)"></input>
+                <input type="text" id="harlicValue" placeholder="value (ether)"></input>
+                <!-- <input type="text" id="publicEquity" placeholder="public equity"></input> -->
+                <input type="text" id="feeBeneficiary" placeholder="fee beneficiary"></input>
+                <input type="text" id="tokenURI" placeholder="tokenURI"></input>
+                <input type="text" id="videoID" placeholder="video ID"></input>
+                <button class ="btn-default" id="mintToken">Mint Token</button>
+            </a></li></br>
 
               <!-- Dropdown-->
 
@@ -833,46 +845,41 @@
               <h1 class ="sticky-top">What is this?</h1><br>
             </div>
             <div class ="col-sm-8" style="padding-left: 0; padding-right: 0">
-              <h2>This is an illustration of a novel private property scheme called Harberger taxation.</h2>
+              <h2>This is an illustration of a novel property scheme called Harberger taxation or licensing.</h2>
                 <h4>Based on the ideas of economists Henry George, Arnold Harberger, and Glen Weyl, Harberger taxation is designed to reduce monopoly rents and inefficient speculative behavior. If implemented in the real world, it could be the basis of a more just, equal, and efficient economy. This project is a "sandbox" and a bridge to broader implementation in cryptocurrency ecosystems and beyond.
                   <br><iframe class="embed-responsive-item" style="width: 100%" src="https://www.youtube.com/embed/hXrZ5Ek52ko?modestbranding=1" id="tutorialVid" allow="fullscreen"></iframe>
                 </h4>
 
               <h2>OK, how does this work?</h2>
-                <h4>Your "property" in this scheme is a unique Ethereum (ERC-721) token, entitling you to control one of the 16 video panels. To possess a Token, you have to pay property tax. This is calculated as a percentage of the Token's declared value. But <i>you get to to declare</i> yourself what the Token (i.e., your control of a video panel) is worth.</h4>
+                <h4>Your "property" in this scheme is a unique Ethereum (ERC-721) token, entitling you to control one of the 16 video panels. To possess a token, you have to pay "property tax." This is a fee calculated as a percentage of the token's declared value. But <i>you get to to declare</i> yourself what the token (i.e., your control of a video panel) is worth.</h4>
                 <h4>What's the catch--why not just declare low values? Because the value you declare is <i>also a public sell offer</i>. If someone pays you that amount, you must give them your property.</h4>
-              <h2>How do I find out which Token ID corresponds to which panel?</h2>
-                <h4>The Tokens are numbered 1-16. Click the "info" icon at the top left of the screen to see the Token ID numbers, or enter a number from 1-16 in the "Select a Token" box on the console (accessible with the plus sign in the upper left of the screen). The video corresponding to the Token whose number is in the box will be highlighted on the screen, and you can click "Get Detailed Info" for more about that Token.</h4>
+              <h2>How do I find out which token ID corresponds to which panel?</h2>
+                <h4>The tokens are numbered 1-16. Click the "info" icon at the top left of the screen to see the token ID numbers, or enter a number from 1-16 in the "Select a Token" box on the console (accessible with the plus sign in the upper left of the screen). The video corresponding to the token whose number is in the box will be highlighted on the screen, and you can click "Get Detailed Info" for more about that token.</h4>
               <h2>Start interacting with the tokens by buying one.</h2>
                 <h4>(You'll need Metamask to do this.)  Use the console to select a token, see its price, tax rate, and other relevant data, and buy it.</h4>
-              <h2>When you own a Token, you can control the video that apears on the corresponding panel on this site.</h2>
-                <h4>You do this by selecting the Token in the console and submitting a new YouTube video ID (found at the end of every YouTube URL).  You can also reassess its value, and pay taxes you owe on the Token.</h4>
+              <h2>When you own a token, you can control the video that apears on the corresponding panel on this site.</h2>
+                <h4>You do this by selecting the token in the console and submitting a new YouTube video ID (found at the end of every YouTube URL).  You can also reassess its value, and pay taxes you owe on the token.</h4>
+              <h2>I bought a token (or called a function on a token), and the transaction is confirmed on the blockchain, but it appears nothing happened?  WTF?</h2>
+                  <h4>With the relevant token selected, call the "Update/Recalculate Taxes Owed" function.  This should work.  If not, refresh your browser.  If that doesn't work, clear your cache and reload the page.</h4>
               <h2>How are taxes calculated?</h2>
                   <h4>When it was created, each token was assigned a base tax rate. The first few owners of each token, however, pay less than that base rate. As the token changes hands more times, it approaches this rate asymptotically (current rate = (1 - (base rate/number of times the token has been purchased)). When you click "detailed info" on the console you can see each token's current tax rate and the rate that you will pay after you have acquired it. This pattern reflects the idea of <a href="https://medium.com/blockchannel/reimagining-property-fbce9d3832a4">"decaying artificial capital"</a> and gives early adopters a heightened incentive to drive the platform's value.</h4>
               <h2>How are taxes collected?</h2>
-                <h4>The amount of back taxes owed by Token possessors are tracked continually, assessed each second. A Token owner may pay taxes to zero out her back taxes.  Or, she may simply not pay taxes.  But when a new owner buys the Token from her, she will receive only the price of the Token minus the back taxes she owes.</h4>
-                <h4>Furthermore, <b>if her back taxes grow to exceed one Ether,<i>the value of her Token will be automatically reset to zero</i></b>, allowing anyone else to snap it up.  So don't let your back taxes accumulate!</h4>
+                <h4>The amount of back taxes owed by token possessors are tracked continually, assessed each second. A token owner may pay taxes to zero out her back taxes.  Or, she may simply not pay taxes.  But when a new owner buys the token from her, she will receive only the price of the token minus the back taxes she owes.</h4>
+                <h4>Furthermore, <b>if her back taxes grow to exceed one Ether,<i>the value of her token will be automatically reset to zero</i></b>, allowing anyone else to snap it up.  So don't let your back taxes accumulate!</h4>
               <h2>Where does the tax money go?</h2>
-                <h4>On the Rinkeby testnet, the fake ether collected via tax on Tokens 1-16 (i.e., the videos) goes to an account controlled by Nonomos (this is the "Tax Beneficiary" under Detailed Info).  It's TBD how tax revenues will be handled on mainnet. In an ideal Harberger tax ecosystem, the taxes would actually be divided up and sent directly back to you--i.e., visitors of this website--to compensate you for the fact that your eyeballs make this ecosystem more valuable. This reflects a thought-provoking insight known as the Henry George Theorem. But to do that here, we'd need to verify your identity, which is beyond the scope of the demo at this point.</h4>
-                <h4>Remember, too, that if you use our smart contract to mint your own Harberger license Tokens (i.e., Tokens numbered higher than 16), you can set the tax beneficiary yourself, thus plugging the taxation system into whatever institutional architecture you please.  See below.</h4>
-              <h2>Can I do anything else with these Tokens?</h2>
-                <h4>Yep. Below, you can mint your very own. Token IDs 1-16 are taken for the 16 video panels here. But IDs 17-infinity, as of this writing, do not exist. Choose a unique number (the transaction will fail if your preferred Token ID has already been taken), fill in the rest of the info (if there is a field that you don't need, like video ID, it doesn't matter, just put any string of letters/numbers), and click Mint Token. The unique ERC-721 token is now held by the account you used to mint it. You can interact with it on this site, or if you know what you're doing, any other Ethereum client. Write a real-world contract that entitles the holder to of your Token to use a real-world asset. Experiment!  And check out our <a href="https://github.com/anoanoano/NonomosHL">Github.</a></h4>
-
+                <h4>On the Rinkeby testnet, the fake ether collected via tax on tokens 1-16 (i.e., the videos) goes to an account controlled by Nonomos (this is the "Tax Beneficiary" under Detailed Info).  It's TBD how tax revenues will be handled on mainnet. In an ideal Harberger tax ecosystem, the taxes would actually be divided up and sent directly back to you--i.e., visitors of this website--to compensate you for the fact that your eyeballs make this ecosystem more valuable. This reflects a thought-provoking insight known as the Henry George Theorem. But to do that here, we'd need to verify your identity, which is beyond the scope of the demo at this point.</h4>
+                <h4>Remember, too, that if you use our smart contract to mint your own Harberger license tokens (i.e., tokens numbered higher than 16), you can set the tax beneficiary yourself, thus plugging the taxation system into whatever institutional architecture you please.  See below.</h4>
+              <h2>Can I do anything else with these tokens?</h2>
+                <h4>Yep. Below, you can mint your very own. Token IDs 1-16 are taken for the 16 video panels here. But IDs 17-infinity, as of this writing, do not exist. Choose a unique number (the transaction will fail if your preferred token ID has already been taken), fill in the rest of the info (if there is a field that you don't need, like video ID, it doesn't matter, just put any string of letters/numbers), and click Mint Token. The unique ERC-721 token is now held by the account you used to mint it. You can interact with it on this site, or if you know what you're doing, any other Ethereum client. Write a real-world contract that entitles the holder to of your token to use a real-world asset. Experiment!  And check out our <a href="https://github.com/anoanoano/NonomosHL">Github.</a></h4>
+              <h2>How do I mint a token?</h2>
+                <h4>The mint functionality is at the bottom of the console. (Click the "plus" in the upper left of the screen and scroll down.) Enjoy!</h4>
             </div>
-          </div>
-          <div>
-            <input type="text" id="tokenID" placeholder="token ID"></input>
-            <input type="text" id="turnoverRate" placeholder="yearly base tax (%)"></input>
-            <input type="text" id="harlicValue" placeholder="value (ether)"></input>
-            <!-- <input type="text" id="publicEquity" placeholder="public equity"></input> -->
-            <input type="text" id="feeBeneficiary" placeholder="fee beneficiary"></input>
-            <input type="text" id="tokenURI" placeholder="tokenURI"></input>
-            <input type="text" id="videoID" placeholder="video ID"></input>
-            <button class ="btn-default" id="mintToken">Mint Token</button>
           </div>
         </div>
       </div>
       <h4 style="background-color: lightgrey; text-align: center">Nonomos, 2018</h4>
+      <h5 style="background-color: lightgrey; text-align: center">matt@nonomos.com</h5>
+      <h5 style="background-color: lightgrey; text-align: center">This is a project under development, which will have bugs. The smart contract code is MIT-licensed, but acknowledgment is appreciated. You are responsible for whatever you do with it. Constructive input appreciated!</h5>
     </div>
 
 

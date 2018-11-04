@@ -12,6 +12,7 @@ App = {
   initWeb3: function() {
     // metamask and mist inject their own web3 instances, so just
     // set the provider if it exists
+
     if (typeof web3 !== "undefined") {
       App.web3Provider = web3.currentProvider;
       web3 = new Web3(web3.currentProvider);
