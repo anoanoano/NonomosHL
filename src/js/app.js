@@ -13,48 +13,76 @@ App = {
     // metamask and mist inject their own web3 instances, so just
     // set the provider if it exists
 
+    //test insertion
     if (typeof web3 !== "undefined") {
+  //end
       App.web3Provider = web3.currentProvider;
-      web3 = new Web3(web3.currentProvider);
 
-      web3.version.getNetwork((err, netId) => {
-        web3.eth.getAccounts(function(error, accounts) {
-          if (error) {
-            console.log(error);
-          }
 
-          var account = accounts[0];
+        // window.addEventListener('load', () => {
+        //     if (typeof web3 !== 'undefined') {
+        //         web3 = new Web3(web3.currentProvider);
+        //     } else {
+        //         console.log('No web3? You should consider trying MetaMask!');
+        //         web3 = new Web3(new Web3.providers.HttpProvider('http://localhost:8545'));
+        //     }
+        // });
 
-        switch (netId) {
-          case "1":
-            console.log('This is mainnet')
-            $('#networkInfo').html("You are connected to Mainnet. Connect to Rinkeby to use the app.");
-            break
-          case "2":
-            console.log('This is the deprecated Morden test network.')
-            $('#networkInfo').html("You are connected to Morden. Connect to Rinkeby to use the app.");
-            break
-          case "3":
-            console.log('This is the ropsten test network.')
-            $('#networkInfo').html("You are connected to Roptsen. Connect to Rinkeby to use the app.");
-            break
-          case "4":
-            console.log('This is the rinkeby test network.')
-            $('#networkInfo').html("network: rinkeby //"+" account: "+account);
-            break
-          case "5":
-            console.log('This is the kovan test network.')
-            $('#networkInfo').html("Kovan is deprecated, please connect to Rinkeby. //"+" kovan account: "+account);
+
+
+
+//get network part
+        web3.version.getNetwork((err, netId) => {
+          web3.eth.getAccounts(function(error, accounts) {
+            if (error) {
+              console.log(error);
+            }
+
+            console.log('this stage');
+            ethereum.enable();
+            console.log('this stage 2');
+
+            //reload page when account changes.
+
+              // Time to reload your interface with accounts[0]!
+              // console.log('reload');
+              // App.reload();
+
+            //end reload page function
+
+            var account = accounts[0];
+            console.log("account is "+account);
+
+          switch (netId) {
+            case "1":
+              console.log('This is mainnet')
+              $('#networkInfo').html("You are connected to Mainnet. Connect to Rinkeby to use the app.");
               break
-          default:
-            console.log('This is an unknown network.')
-            $('#networkInfo').html("Activate Metamask and connect to the Rinkeby Testnet to use the app.");
-            var vidID = "hXrZ5Ek52ko";
-            var embedLink = ("https://www.youtube.com/embed/"+vidID+"?autoplay=1&mute=1&loop=1&modestbranding=1&playlist="+vidID);
-            document.getElementById(1).src = embedLink;
-        }
-      });
-      });
+            case "2":
+              console.log('This is the deprecated Morden test network.')
+              $('#networkInfo').html("You are connected to Morden. Connect to Rinkeby to use the app.");
+              break
+            case "3":
+              console.log('This is the ropsten test network.')
+              $('#networkInfo').html("You are connected to Roptsen. Connect to Rinkeby to use the app.");
+              break
+            case "4":
+              console.log('This is the rinkeby test network.')
+              $('#networkInfo').html("network: rinkeby //"+" account: "+account);
+              break
+            case "5":
+              console.log('This is the kovan test network.')
+              $('#networkInfo').html("Kovan is deprecated, please connect to Rinkeby. //"+" kovan account: "+account);
+                break
+            default:
+              console.log('This is an unknown network.')
+              $('#networkInfo').html("Activate Metamask and connect to the Rinkeby Testnet to use the app.");
+              var vidID = "hXrZ5Ek52ko";
+              var embedLink = ("https://www.youtube.com/embed/"+vidID+"?autoplay=1&mute=1&loop=1&modestbranding=1&playlist="+vidID);
+              document.getElementById(1).src = embedLink;
+            }
+          });
+        });
     } else {
       // set the provider you want from Web3.providers
       //App.web3Provider = new web3.providers.HttpProvider("http://127.0.0.1:7545");
@@ -63,7 +91,68 @@ App = {
       var vidID = "hXrZ5Ek52ko";
       var embedLink = ("https://www.youtube.com/embed/"+vidID+"?autoplay=1&mute=1&loop=1&modestbranding=1&playlist="+vidID);
       document.getElementById(1).src = embedLink;
-    }
+  };
+//end get network part
+
+    window.ethereum.on('accountsChanged', function (accounts) {
+      App.initWeb3();
+
+    });
+
+
+//the old good code
+    // if (typeof web3 !== "undefined") {
+    //   App.web3Provider = web3.currentProvider;
+    //   web3 = new Web3(web3.currentProvider);
+    //
+    //   web3.version.getNetwork((err, netId) => {
+    //     web3.eth.getAccounts(function(error, accounts) {
+    //       if (error) {
+    //         console.log(error);
+    //       }
+    //
+    //       var account = accounts[0];
+    //
+    //     switch (netId) {
+    //       case "1":
+    //         console.log('This is mainnet')
+    //         $('#networkInfo').html("You are connected to Mainnet. Connect to Rinkeby to use the app.");
+    //         break
+    //       case "2":
+    //         console.log('This is the deprecated Morden test network.')
+    //         $('#networkInfo').html("You are connected to Morden. Connect to Rinkeby to use the app.");
+    //         break
+    //       case "3":
+    //         console.log('This is the ropsten test network.')
+    //         $('#networkInfo').html("You are connected to Roptsen. Connect to Rinkeby to use the app.");
+    //         break
+    //       case "4":
+    //         console.log('This is the rinkeby test network.')
+    //         $('#networkInfo').html("network: rinkeby //"+" account: "+account);
+    //         break
+    //       case "5":
+    //         console.log('This is the kovan test network.')
+    //         $('#networkInfo').html("Kovan is deprecated, please connect to Rinkeby. //"+" kovan account: "+account);
+    //           break
+    //       default:
+    //         console.log('This is an unknown network.')
+    //         $('#networkInfo').html("Activate Metamask and connect to the Rinkeby Testnet to use the app.");
+    //         var vidID = "hXrZ5Ek52ko";
+    //         var embedLink = ("https://www.youtube.com/embed/"+vidID+"?autoplay=1&mute=1&loop=1&modestbranding=1&playlist="+vidID);
+    //         document.getElementById(1).src = embedLink;
+    //     }
+    //   });
+    //   });
+    // } else {
+    //   // set the provider you want from Web3.providers
+    //   //App.web3Provider = new web3.providers.HttpProvider("http://127.0.0.1:7545");
+    //   //web3 = new Web3(App.web3Provider);
+    //   $('#networkInfo').html("Activate Metamask and connect to the Rinkeby Testnet to use the app.");
+    //   var vidID = "hXrZ5Ek52ko";
+    //   var embedLink = ("https://www.youtube.com/embed/"+vidID+"?autoplay=1&mute=1&loop=1&modestbranding=1&playlist="+vidID);
+    //   document.getElementById(1).src = embedLink;
+    // }
+  //end the good code
 
     return App.initContract();
 
