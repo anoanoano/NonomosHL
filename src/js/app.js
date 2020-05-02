@@ -96,6 +96,7 @@ App = {
 
     window.ethereum.on('accountsChanged', function (accounts) {
       App.initWeb3();
+      App.initContract();
 
     });
 
