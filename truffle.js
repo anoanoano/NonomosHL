@@ -1,6 +1,6 @@
 //Kovan test material
 require('dotenv').config();
-var HDWalletProvider = require("truffle-hdwallet-provider");
+var HDWalletProvider = require("@truffle/hdwallet-provider");
 var mnemonic = process.env.MNEMONIC;
 var infura_key = process.env.INFURA_KEY;
 
