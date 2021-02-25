@@ -5,6 +5,13 @@ var mnemonic = process.env.MNEMONIC;
 var infura_key = process.env.INFURA_KEY;
 
 module.exports = {
+
+  compilers: {
+    solc: {
+      version: "0.4.25"
+    }
+  },
+
   networks: {
 
     // kovan: {
