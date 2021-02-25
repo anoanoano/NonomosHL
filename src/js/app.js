@@ -10,12 +10,22 @@ App = {
   },
 
   initWeb3: function() {
+
+    // if (window.ethereum) {
+    //     window.web3 = new Web3(window.ethereum);
+    //     window.ethereum.enable();
+    //     return true;
+    //   }
+
     // metamask and mist inject their own web3 instances, so just
     // set the provider if it exists
 
+
     //test insertion
+    ethereum.enable();
     if (typeof web3 !== "undefined") {
   //end
+
       App.web3Provider = web3.currentProvider;
 
 
