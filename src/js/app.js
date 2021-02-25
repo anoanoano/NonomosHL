@@ -231,6 +231,7 @@ App = {
     $(document).on('click', '#revalueToken', App.handleRevalue);
     $(document).on('click', '#payTax', App.handlePayTax);
     $(document).on('click', '#assessTax', App.handleAssessTax);
+    $(document).on('click', '#seizeToken', App.handleSeizeToken);
         //video functions
     $(document).on('click', '#getVideoID', App.handleGetVideoID);
     $(document).on('click', '#refreshVid', App.handleGetVideoIDAndRefreshFromChain);
@@ -476,6 +477,30 @@ handleAssessTax: function() {
     App.contracts.ERC721HarbergerLicense.deployed().then(function(instance) {
 
       instance.assessTax(tokenID).then(function(result) {
+
+            console.log("tax assessed: "+result);
+
+    }).catch(function(err) {
+      console.log(err.message);
+    });
+  });
+  });
+},
+
+handleSeizeToken: function() {
+  //event.preventDefault();
+
+  web3.eth.getAccounts(function(error, accounts) {
+    if (error) {
+      console.log(error);
+    }
+    console.log("revalue function 1");
+    var account = accounts[0];
+    var tokenID = $('#tokenIDGetter').val();
+
+    App.contracts.ERC721HarbergerLicense.deployed().then(function(instance) {
+
+      instance.confiscateToken(tokenID).then(function(result) {
 
             console.log("tax assessed: "+result);
 
