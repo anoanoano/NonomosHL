@@ -1,4 +1,4 @@
-pragma solidity ^0.4.19;
+pragma solidity >=0.6.0 <0.8.0;
 
 import "./ERC721Basic.sol";
 import "./SafeMath.sol";
