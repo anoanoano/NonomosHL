@@ -425,12 +425,12 @@ contract ERC721HarbergerLicense is ERC721, ERC721BasicToken {
 
 
   /**
-   * @dev Confiscate token with PublicEquity >= 1ETH
+   * @dev Confiscate token with PublicEquity >= .1ETH
    */
   function confiscateToken (uint _tokenID)
     public returns (bool) {
         uint256 tokenIndex = allTokensIndex[_tokenID];
-        bool delinquent = (harlics[tokenIndex].publicEquity > 1);
+        bool delinquent = (harlics[tokenIndex].publicEquity > 100000000000000000);
         address owner = ownerOf(_tokenID);
         if (delinquent == true) {
 
