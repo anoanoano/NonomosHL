@@ -15,7 +15,7 @@ contract ERC721BasicToken is ERC721Basic {
 
   // Equals to `bytes4(keccak256("onERC721Received(address,uint256,bytes)"))`
   // which can be also obtained as `ERC721Receiver(0).onERC721Received.selector`
-  bytes4 constant ERC721_RECEIVED = 0xf0b9e5ba;
+  bytes4 view ERC721_RECEIVED = 0xf0b9e5ba;
 
   // Mapping from token ID to owner
   mapping (uint256 => address) internal tokenOwner;

@@ -223,11 +223,11 @@ contract VCG_operator {
         }
 
     // function getContractBalance ()
-    //     public constant returns (uint256) {
+    //     public view returns (uint256) {
     //         return address(this).balance;
     //     }
     function getKBal ()
-        public constant returns (uint256 _money) {
+        public view returns (uint256 _money) {
             return VCGLib1.getContractBalance();
     }
 
@@ -630,7 +630,7 @@ contract VCG_operator {
         //check storage mapping to see how many Ether the user has posted to the contract
 
     function checkEtherSentToContract ()
-        public constant returns (int256) {
+        public view returns (int256) {
 
             int256 userFunds = postedFunds[msg.sender];
             return userFunds;
@@ -640,18 +640,18 @@ contract VCG_operator {
         ///used in js so keep for now
 
     function electorateMemberGetter (uint256 _electorateID, uint256 _index)
-        public constant returns (address[], address) {
+        public view returns (address[], address) {
             return (electorateList[_electorateID].addressArray,
                     electorateList[_electorateID].addressArray[_index]);
         }
 
     function panelProposalsGetter (uint256 _electorateID)
-        public constant returns (uint256[]) {
+        public view returns (uint256[]) {
             return (electorateProposals[_electorateID]);
         }
 
     function closedProposalsGetterByAddress (address _user)
-        public constant returns (uint256[]) {
+        public view returns (uint256[]) {
             return (addressProposals[_user]);
         }
 

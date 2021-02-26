@@ -538,7 +538,7 @@ contract Supervisor {
     and return the global TaskID of that task, if there is one*/
 
     function testStringGetter ()
-        public constant returns (uint256 numberOfStrings,
+        public view returns (uint256 numberOfStrings,
                               string lastString) {
             uint256 len = testString.length - 1;
             return (testString.length,
@@ -548,7 +548,7 @@ contract Supervisor {
     function getJobSizeAndTaskID (
         uint256 _jobID,
         uint256 _jobTask)
-        public constant returns (uint256 numberOfTaskIDs,
+        public view returns (uint256 numberOfTaskIDs,
                             uint256 calledTaskID) {
 
             return (jobTasks[_jobID].length,
@@ -560,14 +560,14 @@ contract Supervisor {
         //possibly mark owned, eventually
 
     function getContractBalance ()
-        public constant returns (uint256) {
+        public view returns (uint256) {
             return this.balance;
         }
 
         //check storage mapping to see how many Ether the user has posted to the contract
 
     function checkEtherSentToContract ()
-        public constant returns (uint256) {
+        public view returns (uint256) {
 
             uint256 userFunds = postedFunds[msg.sender];
             return userFunds;
@@ -587,19 +587,19 @@ contract Supervisor {
         //simple checker of the contract address, for testing
 
     function checkContractAddress ()
-        external constant returns (address contractAddress) {
+        external view returns (address contractAddress) {
 
             contractAddress = this;
             return contractAddress;
         }
 
     function taskListGetter (uint256 _taskID)
-        public constant returns (string) {
+        public view returns (string) {
             return (taskList[_taskID].taskDescription);
     }
 
     function jobTasklistGetter (uint256 _jobID)
-        public constant returns (uint256[]) {
+        public view returns (uint256[]) {
             return (jobTasks[_jobID]);
     }
 
