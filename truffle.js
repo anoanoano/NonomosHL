@@ -27,16 +27,32 @@ module.exports = {
       },
       network_id: 2,
       gas: 6721975
-    }
+    },
 
-    // development: {
-    //   host: "localhost",
-    //   port: 8545,
-    //   network_id: "*", // Match any network id // testrpc
-    //   // port: 7545,
-    //   // network_id: "5777", //ganache
-    //   gas: 6721975
-    // }
+    live: {
+      provider: function() {
+        return new HDWalletProvider(mnemonic, "https://rinkeby.infura.io/v3/"+infura_key)
+      },
+      network_id: 1,
+      gas: 6721975
+    },
+
+    ropsten: {
+      provider: function() {
+        return new HDWalletProvider(mnemonic, "https://rinkeby.infura.io/v3/"+infura_key)
+      },
+      network_id: 3,
+      gas: 6721975
+    },
+
+    development: {
+      host: "localhost",
+      port: 8545,
+      network_id: "*", // Match any network id // testrpc
+      // port: 7545,
+      // network_id: "5777", //ganache
+      gas: 6721975
+    }
 
   }
 };
