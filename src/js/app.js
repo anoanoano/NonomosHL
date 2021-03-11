@@ -74,7 +74,7 @@ App = {
               break
             case "3":
               console.log('This is the ropsten test network.')
-              $('#networkInfo').html("You are connected to Roptsen. Connect to Rinkeby to use the app.");
+              $('#networkInfo').html("network: ropsten //"+" account: "+account);
               break
             case "4":
               console.log('This is the rinkeby test network.')

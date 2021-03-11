@@ -324,10 +324,10 @@
   "deployedBytecode": "0x",
   "sourceMap": "",
   "deployedSourceMap": "",
-  "source": "pragma solidity ^0.4.23;\n\nimport \"./ERC721Basic.sol\";\n\n\n/**\n * @title ERC-721 Non-Fungible Token Standard, optional enumeration extension\n * @dev See https://github.com/ethereum/EIPs/blob/master/EIPS/eip-721.md\n */\ncontract ERC721Enumerable is ERC721Basic {\n  function totalSupply() public view returns (uint256);\n  function tokenOfOwnerByIndex(\n    address _owner,\n    uint256 _index\n  )\n    public\n    view\n    returns (uint256 _tokenId);\n\n  function tokenByIndex(uint256 _index) public view returns (uint256);\n}\n\n\n/**\n * @title ERC-721 Non-Fungible Token Standard, optional metadata extension\n * @dev See https://github.com/ethereum/EIPs/blob/master/EIPS/eip-721.md\n */\ncontract ERC721Metadata is ERC721Basic {\n  function name() public view returns (string _name);\n  function symbol() public view returns (string _symbol);\n  function tokenURI(uint256 _tokenId) public view returns (string);\n}\n\n\n/**\n * @title ERC-721 Non-Fungible Token Standard, full implementation interface\n * @dev See https://github.com/ethereum/EIPs/blob/master/EIPS/eip-721.md\n */\ncontract ERC721 is ERC721Basic, ERC721Enumerable, ERC721Metadata {\n}\n",
-  "sourcePath": "/Users/matthewprewitt/JustSavannah/contracts/ERC721.sol",
+  "source": "pragma solidity ^0.4.24;\n\nimport \"./ERC721Basic.sol\";\n\n\n/**\n * @title ERC-721 Non-Fungible Token Standard, optional enumeration extension\n * @dev See https://github.com/ethereum/EIPs/blob/master/EIPS/eip-721.md\n */\ncontract ERC721Enumerable is ERC721Basic {\n  function totalSupply() public view returns (uint256);\n  function tokenOfOwnerByIndex(\n    address _owner,\n    uint256 _index\n  )\n    public\n    view\n    returns (uint256 _tokenId);\n\n  function tokenByIndex(uint256 _index) public view returns (uint256);\n}\n\n\n/**\n * @title ERC-721 Non-Fungible Token Standard, optional metadata extension\n * @dev See https://github.com/ethereum/EIPs/blob/master/EIPS/eip-721.md\n */\ncontract ERC721Metadata is ERC721Basic {\n  function name() public view returns (string _name);\n  function symbol() public view returns (string _symbol);\n  function tokenURI(uint256 _tokenId) public view returns (string);\n}\n\n\n/**\n * @title ERC-721 Non-Fungible Token Standard, full implementation interface\n * @dev See https://github.com/ethereum/EIPs/blob/master/EIPS/eip-721.md\n */\ncontract ERC721 is ERC721Basic, ERC721Enumerable, ERC721Metadata {\n}\n",
+  "sourcePath": "/Users/matthewprewitt/NonomosHL/contracts/ERC721.sol",
   "ast": {
-    "absolutePath": "/Users/matthewprewitt/JustSavannah/contracts/ERC721.sol",
+    "absolutePath": "/Users/matthewprewitt/NonomosHL/contracts/ERC721.sol",
     "exportedSymbols": {
       "ERC721": [
         72
@@ -348,13 +348,13 @@
           "solidity",
           "^",
           "0.4",
-          ".23"
+          ".24"
         ],
         "nodeType": "PragmaDirective",
         "src": "0:24:1"
       },
       {
-        "absolutePath": "/Users/matthewprewitt/JustSavannah/contracts/ERC721Basic.sol",
+        "absolutePath": "/Users/matthewprewitt/NonomosHL/contracts/ERC721Basic.sol",
         "file": "./ERC721Basic.sol",
         "id": 21,
         "nodeType": "ImportDirective",
@@ -967,7 +967,7 @@
     "src": "0:1125:1"
   },
   "legacyAST": {
-    "absolutePath": "/Users/matthewprewitt/JustSavannah/contracts/ERC721.sol",
+    "absolutePath": "/Users/matthewprewitt/NonomosHL/contracts/ERC721.sol",
     "exportedSymbols": {
       "ERC721": [
         72
@@ -988,13 +988,13 @@
           "solidity",
           "^",
           "0.4",
-          ".23"
+          ".24"
         ],
         "nodeType": "PragmaDirective",
         "src": "0:24:1"
       },
       {
-        "absolutePath": "/Users/matthewprewitt/JustSavannah/contracts/ERC721Basic.sol",
+        "absolutePath": "/Users/matthewprewitt/NonomosHL/contracts/ERC721Basic.sol",
         "file": "./ERC721Basic.sol",
         "id": 21,
         "nodeType": "ImportDirective",
@@ -1612,5 +1612,5 @@
   },
   "networks": {},
   "schemaVersion": "2.0.1",
-  "updatedAt": "2018-10-02T01:40:10.377Z"
+  "updatedAt": "2021-03-11T23:30:59.537Z"
 }

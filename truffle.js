@@ -8,7 +8,7 @@ module.exports = {
 
   compilers: {
     solc: {
-      version: "0.4.25"
+      version: "0.4.24"
     }
   },
 
@@ -31,7 +31,7 @@ module.exports = {
 
     live: {
       provider: function() {
-        return new HDWalletProvider(mnemonic, "https://rinkeby.infura.io/v3/"+infura_key)
+        return new HDWalletProvider(mnemonic, "https://mainnet.infura.io/v3/"+infura_key)
       },
       network_id: 1,
       gas: 6721975
@@ -39,7 +39,7 @@ module.exports = {
 
     ropsten: {
       provider: function() {
-        return new HDWalletProvider(mnemonic, "https://rinkeby.infura.io/v3/"+infura_key)
+        return new HDWalletProvider(mnemonic, "https://ropsten.infura.io/v3/"+infura_key)
       },
       network_id: 3,
       gas: 6721975

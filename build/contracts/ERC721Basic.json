@@ -277,10 +277,10 @@
   "deployedBytecode": "0x",
   "sourceMap": "",
   "deployedSourceMap": "",
-  "source": "pragma solidity ^0.4.19;\n\n\n/**\n * @title ERC721 Non-Fungible Token Standard basic interface\n * @dev see https://github.com/ethereum/EIPs/blob/master/EIPS/eip-721.md\n */\ncontract ERC721Basic {\n  event Transfer(\n    address indexed _from,\n    address indexed _to,\n    uint256 _tokenId\n  );\n  event Approval(\n    address indexed _owner,\n    address indexed _approved,\n    uint256 _tokenId\n  );\n  event ApprovalForAll(\n    address indexed _owner,\n    address indexed _operator,\n    bool _approved\n  );\n\n  function balanceOf(address _owner) public view returns (uint256 _balance);\n  function ownerOf(uint256 _tokenId) public view returns (address _owner);\n  function exists(uint256 _tokenId) public view returns (bool _exists);\n\n  function approve(address _to, uint256 _tokenId) public;\n  function getApproved(uint256 _tokenId)\n    public view returns (address _operator);\n\n  function setApprovalForAll(address _operator, bool _approved) public;\n  function isApprovedForAll(address _owner, address _operator)\n    public view returns (bool);\n\n  function transferFrom(address _from, address _to, uint256 _tokenId) public;\n  function safeTransferFrom(address _from, address _to, uint256 _tokenId)\n    public;\n\n  function safeTransferFrom(\n    address _from,\n    address _to,\n    uint256 _tokenId,\n    bytes _data\n  )\n    public;\n}\n",
-  "sourcePath": "/Users/matthewprewitt/JustSavannah/contracts/ERC721Basic.sol",
+  "source": "pragma solidity ^0.4.24;\n\n\n/**\n * @title ERC721 Non-Fungible Token Standard basic interface\n * @dev see https://github.com/ethereum/EIPs/blob/master/EIPS/eip-721.md\n */\ncontract ERC721Basic {\n  event Transfer(\n    address indexed _from,\n    address indexed _to,\n    uint256 _tokenId\n  );\n  event Approval(\n    address indexed _owner,\n    address indexed _approved,\n    uint256 _tokenId\n  );\n  event ApprovalForAll(\n    address indexed _owner,\n    address indexed _operator,\n    bool _approved\n  );\n\n  function balanceOf(address _owner) public view returns (uint256 _balance);\n  function ownerOf(uint256 _tokenId) public view returns (address _owner);\n  function exists(uint256 _tokenId) public view returns (bool _exists);\n\n  function approve(address _to, uint256 _tokenId) public;\n  function getApproved(uint256 _tokenId)\n    public view returns (address _operator);\n\n  function setApprovalForAll(address _operator, bool _approved) public;\n  function isApprovedForAll(address _owner, address _operator)\n    public view returns (bool);\n\n  function transferFrom(address _from, address _to, uint256 _tokenId) public;\n  function safeTransferFrom(address _from, address _to, uint256 _tokenId)\n    public;\n\n  function safeTransferFrom(\n    address _from,\n    address _to,\n    uint256 _tokenId,\n    bytes _data\n  )\n    public;\n}\n",
+  "sourcePath": "/Users/matthewprewitt/NonomosHL/contracts/ERC721Basic.sol",
   "ast": {
-    "absolutePath": "/Users/matthewprewitt/JustSavannah/contracts/ERC721Basic.sol",
+    "absolutePath": "/Users/matthewprewitt/NonomosHL/contracts/ERC721Basic.sol",
     "exportedSymbols": {
       "ERC721Basic": [
         179
@@ -295,7 +295,7 @@
           "solidity",
           "^",
           "0.4",
-          ".19"
+          ".24"
         ],
         "nodeType": "PragmaDirective",
         "src": "0:24:2"
@@ -1564,7 +1564,7 @@
     "src": "0:1323:2"
   },
   "legacyAST": {
-    "absolutePath": "/Users/matthewprewitt/JustSavannah/contracts/ERC721Basic.sol",
+    "absolutePath": "/Users/matthewprewitt/NonomosHL/contracts/ERC721Basic.sol",
     "exportedSymbols": {
       "ERC721Basic": [
         179
@@ -1579,7 +1579,7 @@
           "solidity",
           "^",
           "0.4",
-          ".19"
+          ".24"
         ],
         "nodeType": "PragmaDirective",
         "src": "0:24:2"
@@ -2853,5 +2853,5 @@
   },
   "networks": {},
   "schemaVersion": "2.0.1",
-  "updatedAt": "2018-10-03T15:48:00.541Z"
+  "updatedAt": "2021-03-11T23:33:13.529Z"
 }
