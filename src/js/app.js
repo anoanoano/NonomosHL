@@ -66,7 +66,7 @@ App = {
           switch (netId) {
             case "1":
               console.log('This is mainnet')
-              $('#networkInfo').html("You are connected to Mainnet. Connect to Rinkeby to use the app.");
+              $('#networkInfo').html("network: Ethereum mainnet //"+" account: "+account);
               break
             case "2":
               console.log('This is the deprecated Morden test network.')
