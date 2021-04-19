@@ -13,16 +13,16 @@ var ERC721Receiver = artifacts.require("./ERC721Receiver.sol");
 var AddressUtils = artifacts.require("./AddressUtils.sol");
 
 module.exports = function(deployer) {
-  deployer.deploy(SafeMath);
-  deployer.deploy(Ownable);
+  deployer.deploy(SafeMath, {overwrite: false});
+  deployer.deploy(Ownable, {overwrite: false});
   //deployer.deploy(VCGLib1);
   deployer.link(SafeMath, [ERC721BasicToken]);
   //deployer.link(Ownable, [Supervisor, VCG_operator]);
   //deployer.link(VCGLib1, [Supervisor, VCG_operator]);
   //deployer.deploy(VCG_operator);
-  deployer.deploy(AddressUtils);
+  deployer.deploy(AddressUtils, {overwrite: false});
   deployer.link(AddressUtils, ERC721BasicToken);
-  deployer.deploy(ERC721BasicToken);
-  deployer.deploy(ERC721HarbergerLicense);
+  deployer.deploy(ERC721BasicToken, {overwrite: false});
+  deployer.deploy(ERC721HarbergerLicense, {overwrite: false});
   //deployer.deploy(ERC721Basic);
 }
