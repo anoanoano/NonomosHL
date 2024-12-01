@@ -1,6 +1,6 @@
 # Nonomos
 
-Private property, reinvented.
+Private property, reinvented...
 
 1. This is an illustration of a novel private property scheme called Harberger taxation.
 
